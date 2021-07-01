@@ -11,12 +11,16 @@ const ingredients = [
 // после чего вставит все li за одну операцию в список ul.ingredients.
 // Для создания DOM - узлов используй document.createElement().
 
-const item = document.createElement('li');
-const ulIngredients = document.createElement('ul');
+const ingredientsListEl = document.querySelector('#ingredients');
 
-//item.textContent = ingredients[0];
+const makeItems = ingredients => {
+  return ingredients.map(ingredient => {
+    const itemEl = document.createElement('li');
+    itemEl.textContent = ingredient;
+    return itemEl;
+  });
+};
 
-for (const ingredient of ingredients) {
-  item.textContent = ingredient;
-}
-console.log(item);
+const items = makeItems(ingredients);
+
+ingredientsListEl.append(...items);
